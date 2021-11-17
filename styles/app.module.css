@@ -1,0 +1,20 @@
+.navTitle {
+  color: #bc82e8;
+}
+
+.headerBar {
+  margin: 0;
+  display: flex;
+}
+
+.headRoutes {
+  color: #efbad3;
+  align-self: center;
+}
+
+.mainLogo {
+  background-image: url("https://i.ibb.co/44TH4jw/feather.png");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+}
