@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`  Then it renders homepage unchanged 1`] = `
+<div
+  className="container"
+>
+  <main
+    className="main"
+  >
+    <h1
+      className="title"
+    >
+      Welcome to Tuitah
+    </h1>
+    <div
+      className="inline-logo"
+    />
+  </main>
+  <footer
+    className="footer"
+  >
+    Powered by unicorns
+  </footer>
+</div>
+`;
