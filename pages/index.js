@@ -8,7 +8,8 @@ import NewPostForm from "../components/NewPostForm";
 export default function Home({ tuits }) {
   const [tuitsList, setTuitsList] = useState(tuits);
 
-  const onDelete = async (id) => {
+  const onDelete = async (id, event) => {
+    event.preventDefault();
     await fetch(`https://tutuitah.herokuapp.com/tuits/delete/${id}`, {
       method: "DELETE",
       headers: {
@@ -33,11 +34,11 @@ export default function Home({ tuits }) {
           <NewPostForm />
         </main>
 
-        <h1> Today`s tuits </h1>
+        <h2 className={styles.cardsTitle}> Today`s tuits </h2>
         <ul className={styles.cardsList}>
-          {tuits.map((tuit) => (
+          {tuits.map((tuit, i) => (
             <Link key={tuit.id} href={`/${tuit.id}`} passHref>
-              <TuitCard tuit={tuit} onDelete={onDelete} />
+              <TuitCard tuit={tuit} key={i} onDelete={onDelete} />
             </Link>
           ))}
         </ul>

@@ -16,7 +16,14 @@ const TuitCard = ({ tuit, onDelete }) => {
         <p> {`Fecha: ${showDate(tuit.date)}`} </p>
         <p> {`Mensaje: ${tuit.text}`} </p>
         <p> {`Likes: ${tuit.likes}`} </p>
-        <button className={styles.button} type="submit" onClick={onDelete}>
+        <button
+          className={styles.buttonCard}
+          type="submit"
+          onClick={(event) => {
+            // eslint-disable-next-line no-underscore-dangle
+            onDelete(tuit._id, event);
+          }}
+        >
           {" "}
           Delete{" "}
         </button>

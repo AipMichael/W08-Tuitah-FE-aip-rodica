@@ -43,6 +43,10 @@
   font-size: 4rem;
 }
 
+.cardsTitle {
+  color: #efbad3;
+}
+
 .title,
 .description {
   text-align: center;
@@ -63,12 +67,13 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.cardList {
+.cardsList {
   display: flex;
   flex-direction: column;
   align-items: center;
   list-style: none;
-  max-width: 700px;
+  width: 600px;
+  list-style: none;
 }
 
 .card {
@@ -82,15 +87,29 @@
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 700px;
   list-style: none;
-  background-color: bisque;
+  background-color: #efbad3;
   position: relative;
+  color: white;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #a163f5;
+  border-color: #a163f5;
+}
+
+.formContainerLabel {
+  color: #a163f5;
+}
+.formContainerText {
+  color: #efbad3;
+}
+
+.formContainerInput {
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 .card h2 {
@@ -104,6 +123,30 @@
   line-height: 1.5;
 }
 
+.formContainerButton {
+  background-color: #a163f5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.buttonCard {
+  background-color: white;
+  color: #a163f5;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+}
+
 .logo {
   height: 1em;
   margin-left: 0.5rem;
@@ -114,13 +157,4 @@
     width: 100%;
     flex-direction: column;
   }
-}
-
-.button {
-  width: 100px;
-  height: 40px;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  border-radius: 10px;
 }

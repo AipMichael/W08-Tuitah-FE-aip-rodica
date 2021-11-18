@@ -19,7 +19,6 @@ const NewPostForm = () => {
   };
 
   const createPost = async (newPost) => {
-    console.log(newPost, "linea 22");
     await fetch("https://tutuitah.herokuapp.com/tuits/create", {
       method: "POST",
       body: JSON.stringify(newPost),
