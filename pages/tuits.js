@@ -1,17 +1,31 @@
 import Link from "next/link";
+import { useState } from "react";
 import TuitCard from "../components/TuitCard";
+import styles from "../styles/Home.module.css";
 
 const TuitsSSR = ({tuits}) => {
 
+  const [tuitsList, setTuitsList] = useState(tuits);
 
+  const onDelete = async (id) => {
+    await fetch(`https://tutuitah.herokuapp.com/tuits`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({ id }),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+    setTuitsList( tuitsList.filter((tuit) => (tuit.id !== id)) );
+  };
 
   return (
     <>
       <h1> Tuits </h1>
-      <ul className="tuits-list">
+      <ul className={styles.cardsList}>
         {tuits.map( tuit => (
           <Link key={tuit.id} href={`/tuitsSSR/${tuit.id}`} passHref>
-            <TuitCard tuit={tuit}/>
+            <TuitCard tuit={tuit} onDelete={onDelete}/>
           </Link>
           )
         )}        
