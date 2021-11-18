@@ -1,11 +1,9 @@
 import Link from "next/link";
+import TuitCard from "../components/TuitCard";
 
 const TuitsSSR = ({tuits}) => {
-  
-  const showDate = (fecha) => {
-    const date = new Date(fecha);
-    return date.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' })
-  };
+
+
 
   return (
     <>
@@ -13,11 +11,7 @@ const TuitsSSR = ({tuits}) => {
       <ul className="tuits-list">
         {tuits.map( tuit => (
           <Link key={tuit.id} href={`/tuitsSSR/${tuit.id}`} passHref>
-            <li className="tuit-item"> 
-              <p> {`Fecha: ${ showDate(tuit.date) }`} </p>  
-              <p> {`Mensaje: ${tuit.text}`} </p>  
-              <p> {`Likes: ${tuit.likes}`} </p>
-            </li>
+            <TuitCard tuit={tuit}/>
           </Link>
           )
         )}        
