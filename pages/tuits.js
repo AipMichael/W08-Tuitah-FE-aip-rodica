@@ -8,7 +8,7 @@ const TuitsSSR = ({tuits}) => {
   const [tuitsList, setTuitsList] = useState(tuits);
 
   const onDelete = async (id) => {
-    await fetch(`https://tutuitah.herokuapp.com/tuits`,
+    await fetch(`https://tutuitah.herokuapp.com/tuits/delete`,
       {
         method: "DELETE",
         body: JSON.stringify({ id }),
