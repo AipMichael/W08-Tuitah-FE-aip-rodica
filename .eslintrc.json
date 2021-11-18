@@ -1,3 +1,26 @@
 {
-  "extends": ["next/core-web-vitals", "prettier", "eslit-config-airbnb-base"]
+  "env": {
+    "jest": true
+  },
+  "root": true,
+  "extends": ["next/core-web-vitals", "airbnb-base", "prettier"],
+  "plugins": ["testing-library"],
+  "overrides": [
+    // Only uses Testing Library lint rules in test files
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
+  "rules": {
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-restricted-syntax": "off",
+    "consistent-return": "off",
+    "no-debugger": "off",
+    "no-console": "off"
+  }
 }

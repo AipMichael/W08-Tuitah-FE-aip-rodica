@@ -1,8 +1,23 @@
 import Head from "next/head";
-import Image from "next/image";
+import { useState } from "react";
+import Link from "next/link";
+import TuitCard from "../components/TuitCard";
 import styles from "../styles/Home.module.css";
+import NewPostForm from "../components/NewPostForm";
 
-export default function Home() {
+export default function Home({ tuits }) {
+  const [tuitsList, setTuitsList] = useState(tuits);
+
+  const onDelete = async (id) => {
+    await fetch(`https://tutuitah.herokuapp.com/tuits/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setTuitsList(tuitsList.filter((tuit) => tuit.id !== id));
+  };
+
   return (
     <div className={styles.container}>
       <Head className={styles.navBar}>
@@ -14,9 +29,31 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to Tuitah</h1>
         <div className="inline-logo"></div>
+        <main className={styles.mainForm}>
+          <NewPostForm />
+        </main>
+
+        <h1> Today`s tuits </h1>
+        <ul className={styles.cardsList}>
+          {tuits.map((tuit) => (
+            <Link key={tuit.id} href={`/${tuit.id}`} passHref>
+              <TuitCard tuit={tuit} onDelete={onDelete} />
+            </Link>
+          ))}
+        </ul>
       </main>
 
       <footer className={styles.footer}>Powered by unicorns</footer>
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  const response = await fetch("https://tutuitah.herokuapp.com/tuits");
+  const tuitsAPI = await response.json();
+  return {
+    props: {
+      tuits: tuitsAPI,
+    },
+  };
+};

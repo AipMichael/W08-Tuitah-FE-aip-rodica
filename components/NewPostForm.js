@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import styles from "../styles/Home.module.css";
 
 const NewPostForm = () => {
   const initialData = {
-    body: "",
+    text: "",
+    date: new Date(),
+    likes: 0,
   };
 
   const [postData, setPostData] = useState(initialData);
@@ -16,7 +19,8 @@ const NewPostForm = () => {
   };
 
   const createPost = async (newPost) => {
-    await fetch("https://tutuitah.herokuapp.com/tuits", {
+    console.log(newPost, "linea 22");
+    await fetch("https://tutuitah.herokuapp.com/tuits/create", {
       method: "POST",
       body: JSON.stringify(newPost),
       headers: {
@@ -29,37 +33,38 @@ const NewPostForm = () => {
     event.preventDefault();
 
     createPost(postData);
+    setPostData(initialData);
   };
 
   useEffect(() => {
-    setIsDisabled(postData.body === "");
-  }, [postData.body]);
+    setIsDisabled(postData.text === "");
+  }, [postData.text]);
 
   return (
-    <div className={formContainer}>
-      <h2 className={formContainerText}>We accept your stories!</h2>
+    <div className={styles.formContainer}>
+      <h2 className={styles.formContainerText}>We accept your stories!</h2>
       <form
         onSubmit={onSubmit}
         autoComplete="off"
         noValidate
-        className={formContainerForm}
+        className={styles.formContainerForm}
       >
-        <div className="form-container_body form-line">
-          <label htmlFor="body" className={formContainerLabel}>
+        <div className={styles.formContainerDiv}>
+          <label htmlFor="text" className={styles.formContainerLabel}>
             Your post:
           </label>
           <textarea
-            className={formContainerInput}
-            id="body"
+            className={styles.formContainerInput}
+            id="text"
             placeholder="Enter your post"
-            value={postData.body}
+            value={postData.text}
             onChange={changePostData}
             maxLength="200"
           />
         </div>
         <button
           type="submit"
-          className={formContainerButton}
+          className={styles.formContainerButton}
           disabled={isDisabled}
         >
           Tuit me!
