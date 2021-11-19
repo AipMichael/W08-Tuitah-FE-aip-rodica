@@ -37,7 +37,7 @@ export default function Home({ tuits }) {
         <h2 className={styles.cardsTitle}> Today`s tuits </h2>
         <ul className={styles.cardsList}>
           {tuits.map((tuit, i) => (
-            <Link key={tuit.id} href={`/${tuit.id}`} passHref>
+            <Link key={i} href={`/${tuit.id}`} passHref>
               <TuitCard tuit={tuit} key={i} onDelete={onDelete} />
             </Link>
           ))}

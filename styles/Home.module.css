@@ -37,6 +37,19 @@
   text-decoration: underline;
 }
 
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.formContainerForm {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 .title {
   margin: 0;
   line-height: 1.15;
@@ -85,7 +98,7 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 700px;
+  width: 500px;
   list-style: none;
   background-color: #efbad3;
   position: relative;
@@ -101,9 +114,12 @@
 
 .formContainerLabel {
   color: #a163f5;
+  margin: 5px;
+  align-self: flex-start;
 }
 .formContainerText {
   color: #efbad3;
+  align-self: center;
 }
 
 .formContainerInput {
