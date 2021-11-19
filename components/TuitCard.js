@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
+import React from "react";
 import styles from "../styles/Home.module.css";
 
-const TuitCard = ({ tuit, onDelete }) => {
+// eslint-disable-next-line react/display-name
+const TuitCard = React.forwardRef(({ onDelete, tuit, href }, ref) => {
   const showDate = (fecha) => {
     const date = new Date(fecha);
     return date.toLocaleDateString("es-ES", {
@@ -12,7 +14,7 @@ const TuitCard = ({ tuit, onDelete }) => {
   };
 
   return (
-    <li className="tuit-item">
+    <a className="tuit-item" href={href}>
       <div className={styles.card}>
         <p> {`Fecha: ${showDate(tuit.date)}`} </p>
         <p> {`Mensaje: ${tuit.text}`} </p>
@@ -25,13 +27,12 @@ const TuitCard = ({ tuit, onDelete }) => {
             onDelete(tuit._id, event);
           }}
         >
-          {" "}
-          Delete{" "}
+          Delete
         </button>
       </div>
-    </li>
+    </a>
   );
-};
+});
 
 TuitCard.propTypes = {
   tuit: PropTypes.object.isRequired,
