@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 // eslint-disable-next-line react/display-name
 const TuitCard = React.forwardRef(({ onDelete, tuit, href }, ref) => {
   const showDate = (fecha) => {
+    console.log(ref);
     const date = new Date(fecha);
     return date.toLocaleDateString("es-ES", {
       year: "numeric",
