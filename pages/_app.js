@@ -1,5 +1,4 @@
 import styles from "../styles/app.module.css";
-import Link from "next/link";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -7,16 +6,6 @@ function MyApp({ Component, pageProps }) {
       <header className={styles.headerBar}>
         <h2 className={styles.navTitle}>Tuitah</h2>
         <div className={styles.mainLogo}></div>
-
-        <Link href="/tuits" className={styles.headRoutes}>
-          <span className={styles.headRoutes}>Tuits</span>
-        </Link>
-
-        <div className={styles.mainLogo}></div>
-        
-        <Link href="/newtuit" className={styles.headRoutes}>
-          <span className={styles.headRoutes}>New Tuit</span>
-        </Link>
       </header>
 
       <Component {...pageProps} />
