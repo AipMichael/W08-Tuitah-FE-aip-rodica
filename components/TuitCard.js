@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "../styles/Home.module.css";
 
 const TuitCard = ({ tuit, onDelete }) => {
@@ -30,6 +31,11 @@ const TuitCard = ({ tuit, onDelete }) => {
       </div>
     </li>
   );
+};
+
+TuitCard.propTypes = {
+  tuit: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default TuitCard;
